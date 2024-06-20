@@ -13,7 +13,16 @@ const ContextProvider = (props) => {
     const [resultData,setResultData] = useState("");   //for displaying our result on the web page
 
     const onSent = async (prompt) => {
-        await run(prompt)
+
+        setResultData("")
+        setLoading(true)
+        setShowResult(true)
+        setRecentPrompt(input)
+        const response = await run(input)
+        setResultData(response)
+        setLoading(false)
+        setInput("")
+
     }
 
 
